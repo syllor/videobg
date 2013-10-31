@@ -35,7 +35,7 @@ videobg = function(el,options){
 videobg.prototype = {
   init:function(){
     var that = this;
-    if (this.isMobile())
+    if (isMobile.any())
       return;
 
     if (this.canplay()) {
@@ -141,9 +141,6 @@ videobg.prototype = {
       return false;
     }
   },
-  isMobile : function (){
-    return (navigator.userAgent.match( /iphone|ipad|ipod|android|blackberry|mini|windowssce|palm/) );
-  },
   supportType:function(str){
     var v = document.createElement('video');
     switch (str) {
@@ -160,3 +157,20 @@ videobg.prototype = {
   }
 }
 
+var isMobile = {  
+    Android: function() {  
+        return navigator.userAgent.match(/Android/i) ? true : false;  
+    },  
+    BlackBerry: function() {  
+        return navigator.userAgent.match(/BlackBerry/i) ? true : false;  
+    },  
+    iOS: function() {  
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;  
+    },  
+    Windows: function() {  
+        return navigator.userAgent.match(/IEMobile/i) ? true : false;  
+    },  
+    any: function() {  
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());  
+    }  
+};  
