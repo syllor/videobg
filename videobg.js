@@ -1,4 +1,3 @@
-
 videobg = function(el,options){
   this.options = options
   this.ele = $(el);
@@ -17,7 +16,7 @@ videobg = function(el,options){
     top:'50%',
     left:0,
     'z-index':0
-  }).attr({
+  }).prop({
     autoplay:true,
     loop:true,
     preload:'auto'
